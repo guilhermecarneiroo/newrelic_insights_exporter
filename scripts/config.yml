@@ -3,45 +3,4 @@
   help: returns the initial load average
   type: gauge
   query: SELECT average(duration) FROM BrowserInteraction WHERE category = 'Initial
-    page load' and appName='ContaAzulFront' SINCE 1 minute ago
-- name: generic_errors_total
-  help: returns the amount of generic errors type
-  type: gauge
-  query: SELECT count(*) FROM JavaScriptError WHERE appName='ContaAzulFront' and errorClass
-    = 'Error' and errorMessage not like '[$%' and errorMessage not like '[ng%' SINCE
-    1 minute ago
-- name: not_generic_errors_total
-  help: returns the amount of not generic errors type
-  type: gauge
-  query: SELECT count(*) FROM JavaScriptError WHERE appName='ContaAzulFront' and errorClass
-    != 'Error' SINCE 1 minute ago
-- name: reference_errors_total
-  help: returns the amount of reference errors type
-  type: gauge
-  query: SELECT count(*) FROM JavaScriptError WHERE appName='ContaAzulFront' and errorClass
-    = 'ReferenceError' SINCE 1 minute ago
-- name: syntax_errors_total
-  help: returns the amount of syntax errors type
-  type: gauge
-  query: SELECT count(*) FROM JavaScriptError WHERE appName='ContaAzulFront' and errorClass
-    = 'SyntaxError' SINCE 1 minute ago
-- name: type_errors_total
-  help: returns the amount of type errors type
-  type: gauge
-  query: SELECT count(*) FROM JavaScriptError WHERE appName='ContaAzulFront' and errorClass
-    = 'TypeError' SINCE 1 minute ago
-- name: not_found_files_total
-  help: returns the amount of required files not found
-  type: gauge
-  query: SELECT count(errorMessage) from JavaScriptError where errorMessage LIKE 'Script
-    error for%' and appName = 'ContaAzulFront' SINCE 1 minute ago
-- name: resource_parser_error_total
-  help: returns the amount of resource errors caused by error in parser
-  type: gauge
-  query: SELECT count(*) from JavaScriptError where errorMessage LIKE 'Script error
-    for%' and appName = 'ContaAzulFront' SINCE 1 minute ago
-- name: angularJS_error_total
-  help: returns the amount of errors triggered by angularJS
-  type: gauge
-  query: SELECT count(*) from JavaScriptError where (errorMessage like '[$%' or errorMessage
-    like '[ng%') and appName = 'ContaAzulFront' SINCE 1 minute ago
+    page load' SINCE 1 minute ago
